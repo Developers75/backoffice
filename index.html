@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <!-- importing icons -->
+    <script src="https://kit.fontawesome.com/f2821790ad.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick-theme.css" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+
+    <title>Douk Lkhir | Back Office</title>
+</head>
+
+<body>
+    <div id="root">
+        <!-- I - Header  -->
+        <header id="menuHeader">
+            <!-- 1 - Left box -->
+            <div class="headerLeftBox">
+                <!-- a - searchBtn -->
+                <i class="fa-solid fa-magnifying-glass" id="searchBtn" clicked="false"></i>
+                <!-- b - search bar -->
+                <input type="search" id="searchInput" placeholder="Recherche..">
+            </div>
+            <!-- 2 - Right box -->
+            <div class="headerRightBox">
+                <!-- a - Theme switch  -->
+                <button id="theme-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 472.39 472.39">
+                        <g class="toggle-sun">
+                            <path
+                                d="M403.21,167V69.18H305.38L236.2,0,167,69.18H69.18V167L0,236.2l69.18,69.18v97.83H167l69.18,69.18,69.18-69.18h97.83V305.38l69.18-69.18Zm-167,198.17a129,129,0,1,1,129-129A129,129,0,0,1,236.2,365.19Z" />
+                        </g>
+                        <g class="toggle-circle">
+                            <circle class="cls-1" cx="236.2" cy="236.2" r="103.78" />
+                        </g>
+                    </svg>
+
+                </button>
+            </div>
+        </header>
+        <!-- II - Categories -->
+        <div id="categories">
+            <div class="categoriesSelect">
+                <div class="categoriesCard" id="cat-todayRecord">
+                    <img src="images/records.png" alt="">
+                    <h3>Journée total</h3>
+                </div>
+                <div class="categoriesCard" id="cat-tomorrowRecord">
+                    <img src="images/records.png" alt="">
+                    <h3>Records d'aujourd'hui</h3>
+                </div>
+                <div class="categoriesCard" id="cat-categories">
+                    <img src="images/products.png" alt="">
+                    <h3>Catégories</h3>
+                </div>
+                <div class="categoriesCard" id="cat-products">
+                    <img src="images/products.png" alt="">
+                    <h3>Des produits</h3>
+                </div>
+                <div class="categoriesCard" id="cat-extras">
+                    <img src="images/products.png" alt="">
+                    <h3>L'extras</h3>
+                </div>
+                <div class="categoriesCard" id="cat-employees">
+                    <img src="images/employees.png" alt="">
+                    <h3>Les employés</h3>
+                </div>
+                <div class="categoriesCard" id="cat-clients">
+                    <img src="images/clients.png" alt="">
+                    <h3>Les clients</h3>
+                </div>
+            </div>
+        </div>
+        <!-- III - Sections -->
+        <!-- 1 - main div -->
+        <div id="main" class="table-responsive">
+            <!-- 3 - categories -->
+            <div class="mainChild" id="categories">
+                <!-- a - client add profile section -->
+                <div id="createCategory">
+                    <i class="fa-solid fa-xmark" id="hideCategoryProfile"></i>
+                    <section style="position: relative; display: inline-block;">
+                        <img id="image" src="/images/products.png" alt="Your Image"
+                            style="max-width: 100%; height: auto;">
+                        <label for="file-input"
+                            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); cursor: pointer; width: 100%; height: 100%;">
+                            <i class="fa-solid fa-camera"></i>
+                        </label>
+                        <input id="file-input" type="file" style="display: none;">
+                    </section>
+                    <div>
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="nom fr">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="nom en">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="nom es">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="nom ar">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-sort"></i>
+                        <input type="number" placeholder="classment">
+                    </div>
+                    <section id="addToClist">
+                        <i class="fa-solid fa-plus"></i>
+                        <a>ajouter</a>
+                    </section>
+                </div>
+                <!-- b - filter -->
+                <div class="dataTables_filter">
+                    <i class="fa-solid fa-plus" id="addCategoryBtn"></i>
+                </div>
+                <!-- c - table -->
+                <table id="categoryTable" class="display">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Nom</th>
+                            <th>Classement</th>
+                            <th>Extra</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <!-- 4 - products  -->
+            <div class="mainChild" id="products">
+                <!-- a - client add profile section -->
+                <div id="createProduct">
+                    <i class="fa-solid fa-xmark" id="hideProductProfile"></i>
+                    <section style="position: relative; display: inline-block;">
+                        <img id="image" src="/images/products.png" alt="Your Image"
+                            style="max-width: 100%; height: auto;">
+                        <label for="file-input"
+                            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); cursor: pointer; width: 100%; height: 100%;">
+                            <i class="fa-solid fa-camera"></i>
+                        </label>
+                        <input id="file-input" type="file" style="display: none;">
+                    </section>
+                    <div>
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="nom fr">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="nom en">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="nom es">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="nom ar">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-sort"></i>
+                        <input type="number" placeholder="classment">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-boxes-stacked"></i>
+                        <input type="text" placeholder="catégorie">
+                    </div>
+                    <div>
+                   <i class="fa-brands fa-diaspora"></i>
+                        <input type="number" placeholder="prix">
+                    </div>
+
+                    <div>
+                   <i class="fa-brands fa-diaspora"></i>
+                        <input type="number" placeholder="coût">
+                    </div>
+
+                    <section id="addToClist">
+                        <i class="fa-solid fa-plus"></i>
+                        <a>ajouter</a>
+                    </section>
+                </div>
+                <!-- b - filter -->
+                <div class="dataTables_filter">
+                    <i class="fa-solid fa-plus" id="addProductBtn"></i>
+                </div>
+                <!-- c - table -->
+                <table id="productTable" class="display">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Nom</th>
+                            <th>Classement</th>
+                            <th>Category</th>
+                            <th>Prix</th>
+                            <th>coût</th>
+                            <th>Extra</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <!-- 5 - extra -->
+            <div class="mainChild" id="extras">
+                <!-- a - client add profile section -->
+                <div id="createExtra">
+                    <i class="fa-solid fa-xmark" id="hideExtraProfile"></i>
+                    <section style="position: relative; display: inline-block;">
+                        <img id="image" src="/images/products.png" alt="Your Image"
+                            style="max-width: 100%; height: auto;">
+                        <label for="file-input"
+                            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); cursor: pointer; width: 100%; height: 100%;">
+                            <i class="fa-solid fa-camera"></i>
+                        </label>
+                        <input id="file-input" type="file" style="display: none;">
+                    </section>
+                    <div>
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="nom fr">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="nom en">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="nom es">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="nom ar">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-sort"></i>
+                        <input type="number" placeholder="classment">
+                    </div>
+                    <section id="addToClist">
+                        <i class="fa-solid fa-plus"></i>
+                        <a>ajouter</a>
+                    </section>
+                </div>
+                <!-- b - filter -->
+                <div class="dataTables_filter">
+                    <i class="fa-solid fa-plus" id="addExtraBtn"></i>
+                </div>
+                <!-- c - table -->
+                <table id="extraTable" class="display">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Nom</th>
+                            <th>Extra</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <!-- 6 - employees  -->
+            <div class="mainChild" id="employees">
+                <!-- a - employee add profile section -->
+                <div id="createEmployee">
+                    <i class="fa-solid fa-xmark" id="hideEmployeeProfile"></i>
+                    <section style="position: relative; display: inline-block;">
+                        <img id="image" src="/images/employees.png" alt="Your Image"
+                            style="max-width: 100%; height: auto;">
+                        <label for="file-input"
+                            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); cursor: pointer; width: 100%; height: 100%;">
+                            <i class="fa-solid fa-camera"></i>
+                        </label>
+                        <input id="file-input" type="file" style="display: none;">
+                    </section>
+                    <div>
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="nom">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-briefcase"></i>
+                        <input type="text" placeholder="role">
+                    </div>
+                    <div>
+                        <i class="fa-sharp fa-solid fa-baby-carriage"></i>
+                        <input type="number" placeholder="âge">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-phone"></i>
+                        <input type="number" placeholder="numéro">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" placeholder="email">
+                    </div>
+                    <section id="addToClist">
+                        <i class="fa-solid fa-plus"></i>
+                        <a>ajouter</a>
+                    </section>
+                </div>
+                <!-- b - filter -->
+                <div class="dataTables_filter">
+                    <i class="fa-solid fa-plus" id="addEmployeeBtn"></i>
+                </div>
+                <!-- c - table -->
+                <table id="userTable2" class="display">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Nom</th>
+                            <th>Rôle</th>
+                            <th>Âge</th>
+                            <th>Numéro</th>
+                            <th>Email</th>
+                            <th>Extra</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <!-- 7 - clients  -->
+            <div class="mainChild" id="clients">
+                <!-- a - client add profile section -->
+                <div id="createUser">
+                    <i class="fa-solid fa-xmark" id="hideClientProfile"></i>
+                    <section style="position: relative; display: inline-block;">
+                        <img id="image" src="/images/clients.png" alt="Your Image"
+                            style="max-width: 100%; height: auto;">
+                        <label for="file-input"
+                            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); cursor: pointer; width: 100%; height: 100%;">
+                            <i class="fa-solid fa-camera"></i>
+                        </label>
+                        <input id="file-input" type="file" style="display: none;">
+                    </section>
+                    <div>
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="nom">
+                    </div>
+                    <div>
+                        <i class="fa-sharp fa-solid fa-baby-carriage"></i>
+                        <input type="number" placeholder="âge">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-phone"></i>
+                        <input type="number" placeholder="numéro">
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" placeholder="email">
+                    </div>
+                    <section id="addToClist">
+                        <i class="fa-solid fa-plus"></i>
+                        <a>ajouter</a>
+                    </section>
+                </div>
+                <!-- b - filter -->
+                <div class="dataTables_filter">
+                    <i class="fa-solid fa-plus" id="addClientBtn"></i>
+                </div>
+                <!-- c - table -->
+                <table id="userTable" class="display">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Nom</th>
+                            <th>Âge</th>
+                            <th>Numéro</th>
+                            <th>Email</th>
+                            <th>Extra</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
